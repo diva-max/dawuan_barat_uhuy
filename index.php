@@ -107,7 +107,7 @@
             <li><a href="berita.html">Berita</a></li>
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="Download.html">Download</a></li>
-            <li><a href="pengaduan.html">Form Pengaduan</a></li>
+            <li><a href="pengaduan.php">Form Pengaduan</a></li>
             <li><a href="kontak.html">Kontak</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

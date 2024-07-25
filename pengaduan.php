@@ -89,117 +89,65 @@
 
 <body>
 
-    <?php include 'nav.php'; ?>
 
     <main class=" mx-32 my-16">
         <div class="bg-white py-16 px-32 rounded-lg shadow-lg w-full ">
             <h1 class="mx-auto block text-center text-4xl uppercase font-bold my-6 text-[#215968]">Form Pengaduan Masyarakat</h1>
-            <form id="complaintForm">
+            <form id="complaintForm" method="POST" action="submit_pengaduan.php">
                 <div class="mb-4">
                     <label class="block text-gray-700">Jenis Pengaduan</label>
-                    <select class="mt-1 block w-full border-gray-300 rounded-md py-2 px-3" required>
+                    <select name="jenis_pengaduan" class="mt-1 block w-full border-gray-300 rounded-md py-2 px-3" required>
                         <option value="">Pilih jenis pengaduan</option>
-                        <option value="pengaduan1">Kepala Desa</option>
-                        <option value="pengaduan2">Sekretaris Desa</option>
-                        <option value="pengaduan1">Kaur Pemerintahan</option>
-                        <option value="pengaduan2">Kaur Pembangunan</option>
-                        <option value="pengaduan1">Kaur Keuangan</option>
-                        <option value="pengaduan2">Kaur Umum</option>
-                        <option value="pengaduan1">Kasie Pelayanan</option>
-                        <option value="pengaduan2">Kasie Kesejahteraan</option>
-                        <option value="pengaduan1">Badan Permusyawaratan Desa(BPD)</option>
-                        <option value="pengaduan2">lPMD(Lembaga Pemberdayaan Masyarakat Desa)</option>
-                        <option value="pengaduan1">RW</option>
-                        <option value="pengaduan2">RT</option>
+                        <option value="kepala_desa">Kepala Desa</option>
+                        <option value="sekretaris_desa">Sekretaris Desa</option>
+                        <option value="kaur_pemerintah">Kaur Pemerintahan</option>
+                        <option value="kaur_pembangunan">Kaur Pembangunan</option>
+                        <option value="kaur_keuangan">Kaur Keuangan</option>
+                        <option value="kaur_umum">Kaur Umum</option>
+                        <option value="kasie_pelayanan">Kasie Pelayanan</option>
+                        <option value="kasie_kesejahteraan">Kasie Kesejahteraan</option>
+                        <option value="bpd">Badan Permusyawaratan Desa(BPD)</option>
+                        <option value="lpmd">lPMD(Lembaga Pemberdayaan Masyarakat Desa)</option>
+                        <option value="rw">RW</option>
+                        <option value="rt">RT</option>
                     </select>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Nama Lengkap</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+                    <input type="text" name="nama" class="mt-1 block w-full border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Nomor HP</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+                    <input type="text" name="nomor" class="mt-1 block w-full border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Email</label>
-                    <input type="email" class="mt-1 block w-full border-gray-300 rounded-md" required>
+                    <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Alamat</label>
-                    <textarea class="mt-1 block w-full border-gray-300 rounded-md" required></textarea>
+                    <textarea class="mt-1 block w-full border-gray-300 rounded-md" name="alamat" required></textarea>
                 </div>
                 <div class="mb-4">
                 <div class="mb-4">
                     <label class="block text-gray-700">Kabupaten</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+                    <input type="text" name="kabupaten" class="mt-1 block w-full border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Kelurahan/Desa</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+                    <input type="text" name="kelurahan" class="mt-1 block w-full border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Deskripsikan Pengaduan</label>
-                    <textarea class="mt-1 block w-full border-gray-300 rounded-md" required></textarea>
+                    <textarea class="mt-1 block w-full border-gray-300 rounded-md" name="deskripsi" required></textarea>
                 </div>
                 <div class="text-center">
-                    <button type="button" onclick="submitForm()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
+                    <button type="submit" onclick="submitForm()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
                 </div>
             </form>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', (event) => {
-                document.getElementById('nomorPendaftaran').value = 'REG' + Math.floor(Math.random() * 1000000);
-            });
-
-            function submitForm() {
-                Swal.fire({
-                    title: 'Konfirmasi Pengaduan',
-                    html: `
-                    <form id="confirmationForm" class="text-start leading-8">
-                        <div class="mb-4">
-                            <label class="block text-gray-700">Identitas asli (KTP,SIMK,KITAS) file dalam bentuk pdf</label>
-                            <input type="file" class="mt-1 block w-full border-gray-300 rounded-md" required>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700">Lampiran terkait pengaduan </label>
-                            <input type="file" class="mt-1 block w-full border-gray-300 rounded-md" required>
-                        </div>
-                        <div class="mb-4">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" required>
-                                <span class="ml-2">Saya menyatakan bahwa data yang diisi telah benar</span>
-                            </label>
-                        </div>
-                        <div class="mb-4">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" required>
-                                <span class="ml-2">Saya menyatakan bahwa dokumen telah lengkap</span>
-                            </label>
-                        </div>
-                    </form>
-                `,
-                    confirmButtonText: 'Submit',
-                    focusConfirm: false,
-                    preConfirm: () => {
-                        const confirmationForm = Swal.getPopup().querySelector('#confirmationForm');
-                        if (!confirmationForm.checkValidity()) {
-                            Swal.showValidationMessage('Please complete the form');
-                        }
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire('Pengaduan telah disubmit!', '', 'success');
-                    }
-                });
-            }
-        </script>
-
-
     </main>
 
-    <?php include 'footer.php'; ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <footer id="footer" class="footer position-relative light-background">
